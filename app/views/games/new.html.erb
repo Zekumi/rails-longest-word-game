@@ -1,0 +1,25 @@
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<h1 style="margin-bottom:30px">New Game</h1>
+
+<style>
+ul#table li {
+  display:inline;
+}
+</style>
+
+<ul id="table" style="margin:20px">
+  <% @letters.each do |letter| %>
+    <li class= "btn btn-primary"> <%= letter.capitalize %></li>
+  <% end %>
+</ul>
+
+<h4>What is the longest word you can find?</h4>
+<div class= form>
+  <form action="/score" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :table, @letters %>
+    <input type="text" name="word" style="width:450px" >
+    <input type="submit" class ="btn btn-primary" value="Play!" style="margin:20px">
+  </form>
+</div>
